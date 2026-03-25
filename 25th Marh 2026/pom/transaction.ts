@@ -17,7 +17,7 @@ export class transactionpage {
         await expect(this.page.getByRole('button', { name: 'Withdrawl' })).toBeVisible();
         await this.page.getByRole('button', { name: 'Withdrawl' }).click()
         await expect(this.page.locator('input[type="number"]')).toBeVisible();
-        // await this.page.waitForTimeout(1000);
+        await this.page.waitForTimeout(1000);
         await this.page.locator('input[type="number"]').fill(data.withdrawal);
         await expect(this.page.getByRole('button', { name: 'Withdraw' }).last()).toBeVisible();
         await this.page.getByRole('button', { name: 'Withdraw' }).last().click();
@@ -31,6 +31,10 @@ export class transactionpage {
         const balance = data.deposit - data.withdrawal;
         const bal = this.page.locator('strong.ng-binding').nth(1);
         await expect(bal).toHaveText(balance.toString());
+    }
+
+    async screenshot() {
+        await this.page.screenshot({ path: 'screenshot/task31.png', fullPage: true });
     }
 
     async logout() {

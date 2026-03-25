@@ -26,5 +26,6 @@ test("Banking System", async ({ page }) => {
   await transaction.withdrawal(userData);
   await transaction.withdrawalSuccess();
   await transaction.balanceValidate(userData);
+  await transaction.screenshot();
   await transaction.logout();
 });
